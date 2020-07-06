@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { StyleSheet, View, Text, Button, Alert } from "react-native";
 import color from "../constant/color";
 
@@ -21,13 +21,23 @@ const GameScreen = (props) => {
     randomNumberGenerate(1, 100, props.userChoice)
   );
 
+  const [round, setRound] = useState(0);
+
   const currentLower = useRef(1);
   const currentHigh = useRef(100);
 
+  const { userChoice, onGameOver } = props;
+
+  useEffect(() => {
+    if (currentGues === userChoice) {
+      onGameOver(round);
+    }
+  }, [currentGues, currentGues, userChoice]);
+
   const nextHandlereGues = (direction) => {
     if (
-      (direction === "lower" && currentGues < props.userChoice) ||
-      (direction === "greater" && currentGues > props.userChoice)
+      (direction === "lower" && currentGues < userChoice) ||
+      (direction === "greater" && currentGues > userChoice)
     ) {
       Alert.alert("Don't lie", "You know that wrong", [
         { text: "sorry", style: "cancel" },
@@ -45,6 +55,7 @@ const GameScreen = (props) => {
       currentGues
     );
     setcurrentGues(nextNumber);
+    setRound((currentRound) => currentRound + 1);
   };
 
   return (
