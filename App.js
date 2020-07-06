@@ -4,12 +4,26 @@ import { StyleSheet, Text, View } from "react-native";
 
 import Header from "./components/header";
 import GameStartScreen from "./screens/gameStartScreen";
-
+import GameScreen from "./screens/gameScreen";
 export default function App() {
+  const [userNumber, setuserNumber] = useState();
+
+  const startGameHandler = (selectedNumber) => {
+    setuserNumber(selectedNumber);
+  };
+
+  let content;
+
+  if (userNumber) {
+    content = <GameScreen userChoice={userNumber} />;
+  } else {
+    content = <GameStartScreen onStartGame={startGameHandler} />;
+  }
+
   return (
     <View style={styles.screen}>
       <Header title="TEBAK ANGKA" />
-      <GameStartScreen />
+      {content}
     </View>
   );
 }

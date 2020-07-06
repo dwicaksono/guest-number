@@ -12,12 +12,14 @@ import {
 import color from "../constant/color";
 import Card from "../components/card";
 import Input from "../components/input";
+import NumberContainer from "../components/numberContainer";
+
 const GameStartScreen = (props) => {
   const [enteredValue, setenteredValue] = useState("");
   const numberTexInputHandler = (texInputNumber) => {
     setenteredValue(texInputNumber.replace(/[^0-9]/g, ""));
   };
-  const [selectNumber, setSelectNumber] = useState([]);
+  const [selectNumber, setSelectNumber] = useState();
   const [confirmed, setconfirmed] = useState(true);
 
   const resetHandler = () => {
@@ -37,13 +39,22 @@ const GameStartScreen = (props) => {
     }
     setconfirmed(true);
     setenteredValue("");
-    setSelectNumber([...selectNumber, confirmNumber]);
+    setSelectNumber(confirmNumber);
+    Keyboard.dismiss();
   };
   let infoNumberInput;
   if (confirmed) {
-    selectNumber.forEach((number) => {
-      return (infoNumberInput = <Text>Selected Number : {number}</Text>);
-    });
+    infoNumberInput = (
+      <Card style={styles.numberCard}>
+        <Text style={styles.numberCardtitle}>You Selected</Text>
+        <NumberContainer>{selectNumber}</NumberContainer>
+        <Button
+          title="START GAME"
+          color={color.colorBackground}
+          onPress={() => props.onStartGame(selectNumber)}
+        />
+      </Card>
+    );
   }
 
   return (
@@ -110,5 +121,12 @@ const styles = StyleSheet.create({
   input: {
     width: 50,
     textAlign: "center",
+  },
+
+  numberCard: {
+    width: 200,
+    maxWidth: "50%",
+    marginVertical: 25,
+    alignItems: "center",
   },
 });
