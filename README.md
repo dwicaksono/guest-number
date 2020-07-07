@@ -1,29 +1,22 @@
 ---
-
 ---
 
 # Tebak_angka_react_native
 
 Halo semua, ini adalah simple Apps dengan menggunakan [react native](https://reactnative.dev/) dengan menggunkan [expo](https://docs.expo.io/). Repo ini merupakan hasil dari pembelajaran online saya.
 
-Tebak Angka game sederhana yang dimana user memasukan angka antara 1-99 dan setelah itu akan ada angka random dan kita akan menentukan apakah angka yang kita input pertama kali lebih besar atau lebih kevin dari angka acak yang di tampilkan jika lebih besar pilih (+) jika lebih kecil pilón (-). Game akan berakhir jika angka pilihan kita sama dengan angka acak atau hasil (-) atau (+) = 0, ok sudahlah ya jangan pikirkan Algo sederhananya fokus dari pembelajaran di repo ini bukan disitu.
+Tebak Angka game sederhana yang dimana user memasukan angka antara 1-99 dan setelah itu akan ada angka random dan kita akan menentukan apakah angka yang kita input pertama kali lebih besar atau lebih kecil dari angka acak yang di tampilkan jika lebih besar pilih (+) jika lebih kecil pilih (-). Game akan berakhir jika angka pilihan kita sama dengan angka acak atau hasil (-) atau (+) = 0, ok sudahlah ya jangan pikirkan Algo sederhananya fokus dari pembelajaran di repo ini bukan disitu.
 
 Tujuan dari Apps mobile sederhana ini merupakan,
 
 1. mampu menggunakan dan membuat component yang bisa di pakai barkali-kali setiap di butuhkan component tersebut. jadi ga bikin component berulang-ulang, pada repo ini contohnya tombol(mainButton), color (primary),card component dengan style drop shadow.
-2. Memahami Fungsi dari bawaan react-native <FlatList/>, <View>,<Text>,<TextInput> dll
+2. Memahami Fungsi dari bawaan react-native FlatList, View, Text, TextInput dll
 3. Memahami Styling pada component baik menggunakan Stylesheet.create({}), atau memanggil constant file, maupun line style.
 4. memahami alur kerja props data di setiap component.
 
 berikut hasil tampilan dari Apps mobile "CUPU" ini.
 
-[Tampilan depan](https://i.imgur.com/gbUw8Uo.png)
-
-
-
 ![](https://i.imgur.com/gbUw8Uo.png)
-
-
 
 Summary :
 
