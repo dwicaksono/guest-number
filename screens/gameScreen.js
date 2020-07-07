@@ -6,6 +6,7 @@ import {
   Button,
   Alert,
   ScrollView,
+  FlatList,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import color from "../constant/color";
@@ -26,11 +27,13 @@ const randomNumberGenerate = (min, max, exclude) => {
   }
 };
 
-const listItem = (value, idx) => {
+const listItem = (listLeng, itemData) => {
   return (
-    <View key={idx} style={styles.listItem}>
-      <BodyText style={{ color: "white" }}>#{idx}</BodyText>
-      <BodyText style={{ color: "white" }}>{value}</BodyText>
+    <View style={styles.listItem}>
+      <BodyText style={{ color: "white" }}>
+        #{listLeng - itemData.index}
+      </BodyText>
+      <BodyText style={{ color: "white" }}>{itemData.item}</BodyText>
     </View>
   );
 };
@@ -39,7 +42,7 @@ const GameScreen = (props) => {
   const initialGuess = randomNumberGenerate(1, 100, props.userChoice);
   const [currentGues, setcurrentGues] = useState(initialGuess);
 
-  const [rounds, setRound] = useState([initialGuess]);
+  const [rounds, setRound] = useState([initialGuess.toString()]);
 
   const currentLower = useRef(1);
   const currentHigh = useRef(100);
@@ -73,7 +76,7 @@ const GameScreen = (props) => {
       currentGues
     );
     setcurrentGues(nextNumber);
-    setRound((currentRound) => [nextNumber, ...currentRound]);
+    setRound((currentRound) => [nextNumber.toString(), ...currentRound]);
   };
 
   return (
@@ -95,9 +98,15 @@ const GameScreen = (props) => {
         </MainButton>
       </Card>
       <View style={styles.listContainer}>
-        <ScrollView>
+        {/* <ScrollView contentContainerStyle={styles.listScroll}>
           {rounds.map((item, idx) => listItem(item, rounds.length - idx))}
-        </ScrollView>
+        </ScrollView> */}
+        <FlatList
+          data={rounds}
+          renderItem={listItem.bind(this, rounds.length)}
+          keyExtractor={(item) => item}
+          contentContainerStyle={styles.listScroll}
+        />
       </View>
     </View>
   );
@@ -119,11 +128,16 @@ const styles = StyleSheet.create({
     width: 300,
   },
   listContainer: {
-    width: "80%",
     height: "50%",
-    marginVertical: 10,
+    flex: 1,
+  },
+  listScroll: {
+    flexGrow: 1,
+    justifyContent: "flex-end",
+    alignItems: "center",
   },
   listItem: {
+    width: "80%",
     marginVertical: 8,
     flexDirection: "row",
     justifyContent: "space-between",
