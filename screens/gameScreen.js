@@ -4,6 +4,7 @@ import color from "../constant/color";
 
 import NumberContainer from "../components/numberContainer";
 import Card from "../components/card";
+import MainButton from "../components/mainButtonStyle";
 
 const randomNumberGenerate = (min, max, exclude) => {
   min = Math.ceil(min);
@@ -63,16 +64,12 @@ const GameScreen = (props) => {
       <Text>opponent's guess</Text>
       <NumberContainer>{currentGues}</NumberContainer>
       <Card style={styles.buttonContainer}>
-        <Button
-          title="Lower"
-          onPress={nextHandlereGues.bind(this, "lower")}
-          color={color.colorBackground}
-        />
-        <Button
-          title="Greater"
-          onPress={nextHandlereGues.bind(this, "greater")}
-          color={color.colorBackground}
-        />
+        <MainButton onPress={nextHandlereGues.bind(this, "lower")}>
+          lower
+        </MainButton>
+        <MainButton onPress={nextHandlereGues.bind(this, "greater")}>
+          greater
+        </MainButton>
       </Card>
     </View>
   );
