@@ -17,7 +17,7 @@ Tujuan dari Apps mobile sederhana ini merupakan,
 
 berikut hasil tampilan dari Apps mobile "CUPU" ini.
 
-![Tampilan pertama](https://imgur.com/gbUw8Uo)
+[Tampilan depan](https://i.imgur.com/gbUw8Uos.png)
 
 Summary :
 
