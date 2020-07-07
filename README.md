@@ -1,5 +1,5 @@
 ---
-typora-copy-images-to: ./assets/img/Screen Shot 2020-07-07 at 23.40.22.png
+
 ---
 
 # Tebak_angka_react_native
@@ -17,7 +17,13 @@ Tujuan dari Apps mobile sederhana ini merupakan,
 
 berikut hasil tampilan dari Apps mobile "CUPU" ini.
 
-[Tampilan depan](https://i.imgur.com/gbUw8Uos.png)
+[Tampilan depan](https://i.imgur.com/gbUw8Uo.png)
+
+
+
+![](https://i.imgur.com/gbUw8Uo.png)
+
+
 
 Summary :
 
