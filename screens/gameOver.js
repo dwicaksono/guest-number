@@ -28,7 +28,9 @@ const GameOverScreen = (props) => {
       </BodyText>
 
       <View style={styles.buttonStyle}>
-        <MainButton onPress={props.onNewStart}>start new game</MainButton>
+        <MainButton style={{ borderRadius: 10 }} onPress={props.onNewStart}>
+          start new game
+        </MainButton>
       </View>
     </View>
   );

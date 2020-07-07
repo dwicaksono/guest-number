@@ -51,7 +51,10 @@ const GameStartScreen = (props) => {
       <Card style={styles.numberCard}>
         <BodyText style={styles.numberCardtitle}>You Selected</BodyText>
         <NumberContainer>{selectNumber}</NumberContainer>
-        <MainButton onPress={() => props.onStartGame(selectNumber)}>
+        <MainButton
+          style={{ borderRadius: 10 }}
+          onPress={() => props.onStartGame(selectNumber)}
+        >
           START GAME
         </MainButton>
       </Card>
@@ -75,8 +78,12 @@ const GameStartScreen = (props) => {
             value={enteredValue}
           />
           <View style={styles.buttonContainer}>
-            <MainButton onPress={resetHandler}>reset</MainButton>
-            <MainButton onPress={confirmHandler}>confirm</MainButton>
+            <MainButton style={{ borderRadius: 10 }} onPress={resetHandler}>
+              reset
+            </MainButton>
+            <MainButton style={{ borderRadius: 10 }} onPress={confirmHandler}>
+              confirm
+            </MainButton>
           </View>
         </Card>
         {infoNumberInput}

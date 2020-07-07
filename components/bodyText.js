@@ -1,9 +1,11 @@
 import React from "react";
 import { StyleSheet, Text } from "react-native";
 
-const BodyText = (props) => (
-  <Text style={{ ...styles.bodyText, ...props.style }}>{props.children}</Text>
-);
+const BodyText = (props) => {
+  return (
+    <Text style={{ ...styles.bodyText, ...props.style }}>{props.children}</Text>
+  );
+};
 
 export default BodyText;
 
