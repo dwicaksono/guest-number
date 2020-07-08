@@ -7,6 +7,7 @@ import {
   Alert,
   ScrollView,
   FlatList,
+  Dimensions,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import color from "../constant/color";
@@ -117,13 +118,13 @@ export default GameScreen;
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
-    padding: 10,
+    padding: 20,
     alignItems: "center",
   },
   buttonContainer: {
     flexDirection: "row",
     justifyContent: "space-around",
-    marginTop: 20,
+    marginTop: Dimensions.get("window").height > 600 ? 20 : 2,
     maxWidth: "80%",
     width: 300,
   },

@@ -106,25 +106,26 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
   inputContainer: {
-    width: 300,
+    minWidth: 300,
+    // width: "80%",
     maxWidth: "80%",
     alignItems: "center",
   },
   buttonContainer: {
     flexDirection: "row",
-    width: 400,
-    maxWidth: "80%",
+    width: Dimensions.get("window").width / 2,
+    // maxWidth: "80%",
     justifyContent: "space-between",
     paddingHorizontal: 15,
     marginTop: Dimensions.get("window").height > 600 ? 20 : 2,
   },
   input: {
-    width: 50,
+    minWidth: 30,
     textAlign: "center",
   },
 
   numberCard: {
-    width: 200,
+    minWidth: 200,
     maxWidth: "50%",
     marginVertical: 25,
     alignItems: "center",

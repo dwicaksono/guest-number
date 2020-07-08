@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet, Text, Dimensions } from "react-native";
 
 import color from "../constant/color";
 
@@ -21,7 +21,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     alignContent: "center",
     borderRadius: 10,
-    width: 100,
+    width: Dimensions.get("window").width / 5,
+    maxHeight: Dimensions.get("window").height / 5,
     marginVertical: 10,
   },
   numberCount: {
