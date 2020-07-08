@@ -4,7 +4,15 @@ import color from "../constant/color";
 
 const Headers = (props) => {
   return (
-    <View style={styles.header}>
+    <View
+      style={{
+        ...styles.header,
+        ...Platform.select({
+          ios: styles.headerIos,
+          android: styles.headerAndroid,
+        }),
+      }}
+    >
       <Text style={styles.headerTitle}>{props.title}</Text>
     </View>
   );
@@ -18,10 +26,14 @@ const styles = StyleSheet.create({
     height: 100,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor:
-      Platform.OS === "android" ? color.colorBackground : "#f5f6fa",
-    borderBottomWidth: Platform.OS === "ios" ? 1 : 0,
-    borderBottomColor: Platform.OS === "ios" ? color.colorBackground : null,
+  },
+  headerIos: {
+    backgroundColor: "#f5f6fa",
+    borderBottomWidth: 1,
+    borderBottomColor: color.colorBackground,
+  },
+  headerAndroid: {
+    backgroundColor: color.colorBackground,
   },
   headerTitle: {
     fontSize: 24,
