@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   StyleSheet,
   View,
@@ -8,6 +8,9 @@ import {
   TouchableWithoutFeedback,
   Dimensions,
   Alert,
+  KeyboardAvoidingView,
+  ScrollView,
+  Platform,
 } from "react-native";
 import color from "../constant/color";
 import Card from "../components/card";
@@ -24,6 +27,18 @@ const GameStartScreen = (props) => {
   };
   const [selectNumber, setSelectNumber] = useState();
   const [confirmed, setconfirmed] = useState(true);
+  const [buttonWidth, setbuttonWidth] = useState(
+    Dimensions.get("window").width / 4
+  );
+  useEffect(() => {
+    const updateLayoutButton = () => {
+      setbuttonWidth(Dimensions.get("window").width / 4);
+    };
+    Dimensions.addEventListener("change", updateLayoutButton);
+    return () => {
+      Dimensions.removeEventListener("change", updateLayoutButton);
+    };
+  });
 
   const resetHandler = () => {
     setenteredValue("");
@@ -62,33 +77,47 @@ const GameStartScreen = (props) => {
   }
 
   return (
-    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-      <View style={styles.screen}>
-        <TextTitle style={styles.title}>Start a New Game !</TextTitle>
-        <Card style={styles.inputContainer}>
-          <BodyText>Select Number</BodyText>
-          <Input
-            style={styles.input}
-            autoCapitalize="none"
-            blurOnSubmit
-            keyboardType="number-pad"
-            autoCorrect={false}
-            maxLength={2}
-            onChangeText={numberTexInputHandler}
-            value={enteredValue}
-          />
-          <View style={styles.buttonContainer}>
-            <MainButton style={{ borderRadius: 10 }} onPress={resetHandler}>
-              reset
-            </MainButton>
-            <MainButton style={{ borderRadius: 10 }} onPress={confirmHandler}>
-              confirm
-            </MainButton>
+    <ScrollView>
+      <KeyboardAvoidingView behavior="position" keyboardVerticalOffset={30}>
+        <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+          <View style={styles.screen}>
+            <TextTitle style={styles.title}>Start a New Game !</TextTitle>
+            <Card style={styles.inputContainer}>
+              <BodyText>Select Number</BodyText>
+              <Input
+                style={styles.input}
+                autoCapitalize="none"
+                blurOnSubmit
+                keyboardType="number-pad"
+                autoCorrect={false}
+                maxLength={2}
+                onChangeText={numberTexInputHandler}
+                value={enteredValue}
+              />
+              <View style={styles.buttonContainer}>
+                <View style={{ width: buttonWidth }}>
+                  <MainButton
+                    style={{ borderRadius: 10 }}
+                    onPress={resetHandler}
+                  >
+                    reset
+                  </MainButton>
+                </View>
+                <View style={{ width: buttonWidth }}>
+                  <MainButton
+                    style={{ borderRadius: 10 }}
+                    onPress={confirmHandler}
+                  >
+                    confirm
+                  </MainButton>
+                </View>
+              </View>
+            </Card>
+            {infoNumberInput}
           </View>
-        </Card>
-        {infoNumberInput}
-      </View>
-    </TouchableWithoutFeedback>
+        </TouchableWithoutFeedback>
+      </KeyboardAvoidingView>
+    </ScrollView>
   );
 };
 
@@ -107,17 +136,16 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     minWidth: 300,
-    // width: "80%",
-    maxWidth: "80%",
+    width: "80%",
+    maxWidth: "95%",
     alignItems: "center",
   },
   buttonContainer: {
     flexDirection: "row",
-    width: Dimensions.get("window").width / 2,
-    // maxWidth: "80%",
+    width: "100%",
     justifyContent: "space-between",
     paddingHorizontal: 15,
-    marginTop: Dimensions.get("window").height > 600 ? 20 : 2,
+    // marginTop: Dimensions.get("window").height > 600 ? 20 : 2,
   },
   input: {
     minWidth: 30,

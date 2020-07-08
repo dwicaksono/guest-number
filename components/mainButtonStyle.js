@@ -5,7 +5,7 @@ import color from "../constant/color";
 
 const MainButton = (props) => {
   return (
-    <TouchableOpacity onPress={props.onPress}>
+    <TouchableOpacity activeOpacity={0.6} onPress={props.onPress}>
       <View style={{ ...styles.button, ...props.style }}>
         <Text style={styles.textButton}>{props.children}</Text>
       </View>
@@ -17,13 +17,14 @@ export default MainButton;
 
 const styles = StyleSheet.create({
   button: {
-    paddingHorizontal: 20,
+    paddingHorizontal: 15,
     paddingVertical: 10,
     backgroundColor: color.colorBackground,
   },
   textButton: {
     fontFamily: "open-sans",
     color: "white",
+    textAlign: "center",
     fontSize: 12,
   },
 });

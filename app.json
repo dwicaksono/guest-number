@@ -3,7 +3,7 @@
     "name": "guest-number",
     "slug": "guest-number",
     "version": "1.0.0",
-    "orientation": "default",
+    "orientation": "potrait",
     "icon": "./assets/icon.png",
     "splash": {
       "image": "./assets/splash.png",
